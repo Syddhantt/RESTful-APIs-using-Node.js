@@ -1,9 +1,9 @@
 import addNewContact from '../controllers/crmController';
-import {getAllContacts,getContactById,updateContact,deleteContact}from '../controllers/crmController';
+import { getAllContacts, getContactById, updateContact, deleteContact } from '../controllers/crmController';
 
-const routes = (app) =>{
+const routes = (app) => {
     app.route('/contact')
-    .get((req,res,next)=>{
+    .get((req, res, next) => {
         //middleware
         console.log(`Request from: ${req.originalUrl}`)
         console.log(`Request from: ${req.method}`)
@@ -17,7 +17,6 @@ const routes = (app) =>{
     .get(getContactById)
     .put(updateContact)
     .delete(deleteContact);
-    
 }
 
 export default routes;

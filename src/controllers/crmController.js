@@ -3,10 +3,10 @@ import ContactSchema from '../models/crmModel';
 
 const Contact = mongoose.model('Contact', ContactSchema);
 
-const addNewContact = (req,res) => {
+const addNewContact = (req, res) => {
     let newContact = new Contact(req.body);
 
-    newContact.save((err,contact) => {
+    newContact.save((err, contact) => {
         if(err) {
             res.send(err);
         }
@@ -15,7 +15,7 @@ const addNewContact = (req,res) => {
 };
 export default addNewContact;
 
-export const getAllContacts = (req,res) => {
+export const getAllContacts = (req, res) => {
     Contact.find({},(err, contact) => {
        if(err) {
            res.send(err);
@@ -25,7 +25,7 @@ export const getAllContacts = (req,res) => {
     });
 };
 
-export const getContactById = (req,res) => {
+export const getContactById = (req, res) => {
     Contact.findById(req.params.contactId, (err,contact) => {
        if(err) {
            res.send(err);
@@ -35,7 +35,7 @@ export const getContactById = (req,res) => {
     });
 };
 
-export const updateContact=(req,res) => {
+export const updateContact = (req, res) => {
     Contact.findOneAndUpdate({_id: req.params.contactId}, req.body, { new : true }, (err, contact) => {
         if(err) {
             res.send(err);
@@ -44,7 +44,7 @@ export const updateContact=(req,res) => {
     });
 }
       
-export const deleteContact = (req,res) => {
+export const deleteContact = (req, res) => {
     Contact.remove({_id:req.params.contactId}, (err,contact) => {
         if(err) {
             res.send(err);
